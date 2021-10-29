@@ -19,33 +19,33 @@ namespace Business.Concrete
             _categoryDal = categoryDal;
         }
 
-        public IResult Add(Category category)
+        public void Add(Category category)
         {
             _categoryDal.Insert(category);
-            return new SuccessResult("Category added");
+            
         }
 
-        public IResult Delete(Category category)
+        public void Delete(Category category)
         {
             _categoryDal.Delete(category);
-            return new SuccessResult("Category deleted");
+            
         }
 
-        public IDataResult<List<Category>> GetAll()
+        public List<Category> GetAll()
         {
-            return new SuccessDataResult<List<Category>>(_categoryDal.GetAll(), "Category listed");
+            return _categoryDal.GetAll();
 
         }
 
-        public IDataResult<Category> GetById(int id)
+        public Category GetById(int id)
         {
-            return new SuccessDataResult<Category>(_categoryDal.Get(c => c.CategoryId == id));
+           return _categoryDal.Get(c => c.CategoryId == id);
         }
 
-        public IResult Update(Category category)
+        public void Update(Category category)
         {
             _categoryDal.Update(category);
-            return new SuccessResult("Category updated");
+            
         }
     }
 }

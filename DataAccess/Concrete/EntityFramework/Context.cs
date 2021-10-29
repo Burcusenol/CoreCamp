@@ -12,6 +12,7 @@ namespace DataAccess.Concrete
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            //@"Server=(localdb)\MSSQLLocalDB;Database=CarDb;Trusted_Connection=true"
             optionsBuilder.UseSqlServer("server = (localdb)\\MSSQLLocalDB; Database = BlogDb; Trusted_Connection = true");
         }
 
