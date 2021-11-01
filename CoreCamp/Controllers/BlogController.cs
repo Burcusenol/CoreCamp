@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Business.Abstract;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,17 @@ namespace CoreCamp.Controllers
 {
     public class BlogController : Controller
     {
+        IBlogService _blogService;
+
+        public BlogController(IBlogService blogService)
+        {
+            _blogService = blogService;
+        }
+
         public IActionResult Index()
         {
-            return View();
+            var result = _blogService.GetWithCategoroy();
+            return View(result);
         }
     }
 }
