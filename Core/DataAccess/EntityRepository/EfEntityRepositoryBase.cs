@@ -64,6 +64,5 @@ namespace Core.DataAccess.EntityRepository
             }
         }
 
-      
     }
 }

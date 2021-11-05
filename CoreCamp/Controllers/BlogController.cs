@@ -21,5 +21,11 @@ namespace CoreCamp.Controllers
             var result = _blogService.GetWithCategoroy();
             return View(result);
         }
+        public IActionResult BlogDetails(int id)
+        {
+            var result = _blogService.GetBlogDetail(id);
+            return View(result);
+        }
+
     }
 }
