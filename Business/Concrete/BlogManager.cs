@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -18,38 +20,41 @@ namespace Business.Concrete
             _blogDal = blogDal;
         }
 
-        public void Add(Blog blog)
+        public IResult Add(Blog blog)
         {
             _blogDal.Insert(blog);
+            return new SuccessResult(Messages.BlogAdded);
         }
 
-        public void Delete(Blog blog)
+        public IResult Delete(Blog blog)
         {
             _blogDal.Delete(blog);
+            return new SuccessResult(Messages.BlogDeleted);
         }
 
-        public List<Blog> GetAll()
+        public IDataResult<List<Blog>> GetAll()
         {
-            return _blogDal.GetAll();
+            return new SuccessDataResult<List<Blog>>(_blogDal.GetAll(),Messages.BlogListed);
         }
 
-        public Blog GetById(int id)
+        public IDataResult<Blog> GetById(int id)
         {
-            return _blogDal.Get(i => i.BlogId==id);
+            return new SuccessDataResult<Blog>(_blogDal.Get(i => i.BlogId==id));
         }
 
-        public List<Blog> GetBlogDetail(int id)
+        public IDataResult<List<Blog>> GetBlogDetail(int id)
         {
-            return _blogDal.GetAll(i => i.BlogId == id);
+            return new SuccessDataResult<List<Blog>>(_blogDal.GetAll(i => i.BlogId == id));
         }
-        public List<Blog> GetWithCategoroy()
+        public IDataResult<List<Blog>> GetWithCategoroy()
         {
-            return _blogDal.GetWithCategory();
+            return new SuccessDataResult<List<Blog>>(_blogDal.GetWithCategory());
         }
 
-        public void Update(Blog blog)
+        public IResult Update(Blog blog)
         {
             _blogDal.Update(blog);
+            return new SuccessResult(Messages.BlogUpdated);
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Entities.Concrete.Blog>
+﻿@using Entities.Concrete
+@using Core.Utilities.Results
+@model IDataResult<List<Blog>>
 
 @{
     ViewData["Title"] = "BlogDetails";
@@ -9,8 +11,8 @@
 <html lang="zxx">
 
 <body>
-   
- 
+
+
 
     <!--//banner-->
     <section class="banner-bottom">
@@ -19,7 +21,7 @@
             <div class="row">
                 <!--left-->
                 <div class="col-lg-8 left-blog-info-w3layouts-agileits text-left">
-                    @foreach (var item in Model)
+                    @foreach (var item in Model.Data)
                     {
                         <div class="blog-grid-top">
                             <div class="b-grid-top">
@@ -59,7 +61,9 @@
                             <a href="/Blog/Index" class="btn btn-primary read-m">Blog Listesi</a>
                         </div>
                     }
-                    @await Html.PartialAsync("~/Views/Comment/CommentList.cshtml")
+
+                    @await Component.InvokeAsync("CommentList") 
+                    @*@await Html.PartialAsync("~/Views/Comment/CommentList.cshtml")*@
                     @await Html.PartialAsync("~/Views/Comment/PartialAddComment.cshtml")
                 </div>
 

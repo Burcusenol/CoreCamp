@@ -1,5 +1,6 @@
 ﻿@using Entities.Concrete
-@model List<Blog>
+@using Core.Utilities.Results
+@model IDataResult<List<Blog>>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/UserLayout.cshtml";
@@ -11,7 +12,7 @@
         <div class="inner-sec">
             <div class="left-blog-info-w3layouts-agileits text-left">
                 <div class="row">
-                    @foreach (var item in Model)
+                    @foreach (var item in Model.Data)
                     {
 
 

@@ -1,5 +1,6 @@
 ﻿@using Entities.Concrete
-@model List<Category>
+@using Core.Utilities.Results
+@model IDataResult<List<Category>>
 @{
     Layout = null;
 }
@@ -15,14 +16,14 @@
         <th>Detaylar</th>
         <th>Sil</th>
     </tr>
-    @foreach (var item in Model)
+    @foreach (var item in Model.Data)
     {
-<tr>
-    <td>@item.CategoryId</td>
-    <td>@item.CategoryName</td>
-    <td>@item.Status</td>
-    <td><a href="#" class="btn btn-warning">Detaylar</a></td>
-    <td><a class="btn btn-danger">Sil</a></td>
-</tr>
+        <tr>
+            <td>@item.CategoryId</td>
+            <td>@item.CategoryName</td>
+            <td>@item.Status</td>
+            <td><a href="#" class="btn btn-warning">Detaylar</a></td>
+            <td><a class="btn btn-danger">Sil</a></td>
+        </tr>
     }
 </table>

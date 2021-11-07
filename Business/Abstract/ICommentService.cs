@@ -1,4 +1,5 @@
-﻿using Entities.Concrete;
+﻿using Core.Utilities.Results;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,7 @@ namespace Business.Abstract
 {
     public interface ICommentService
     {
-        void Add(Comment comment);
-        void Update(Comment comment);
-        void Delete(Comment comment);
-        List<Comment> GetAll();
-        Comment GetById(int id);
+        IResult Add(Comment comment);
+        IDataResult<List<Comment>> GetList(int id);
     }
 }

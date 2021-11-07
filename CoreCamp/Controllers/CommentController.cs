@@ -26,9 +26,10 @@ namespace CoreCamp.Controllers
             return PartialView();
         }
 
-        public PartialViewResult CommentList()
+        public PartialViewResult CommentList(int id)
         {
-            return PartialView();
+            var result=_commentService.GetList(id);
+            return PartialView(result);
         }
     }
 }
